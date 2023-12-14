@@ -4,5 +4,13 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #dd9b99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
