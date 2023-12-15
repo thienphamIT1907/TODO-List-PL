@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
 const ListStyled = styled.div`
-  margin-top: 25px;
+  overflow-y: ${({ isShowScrollbar }) =>
+    isShowScrollbar === true ? "scroll" : "hidden"};
+  height: 150px;
 `;
 
 export default ListStyled;

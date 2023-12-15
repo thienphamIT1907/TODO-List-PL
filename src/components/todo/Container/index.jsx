@@ -10,8 +10,9 @@ const Container = () => {
       <Title content="To do list:" />
       {/* Input */}
       <Input />
-      {/* List */}
+      {/**List */}
       <List />
+
     </ContainerStyled>
   );
 };

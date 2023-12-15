@@ -1,15 +1,34 @@
-import { todoMock } from "../../../data/todo_mock";
-import Item from "../Item";
+import { useEffect, useState } from "react";
+import axiosRequest from "../../../config/axiosConfig";
+import TodoItem from "../Item";
 import ListStyled from "./styles";
 
 const List = () => {
-  // useEffect call API, setData
+  const [todoList, setTodoList] = useState([]);
+  const [isShowScrollbar, setIsShowScrollbar] = useState(false);
+
+  useEffect(() => {
+    const fetchTodo = async () => {
+      const response = await axiosRequest("/todos");
+      setTodoList(response.data);
+
+      if (response.data.length > 3) {
+        setIsShowScrollbar(true);
+      } else {
+        setIsShowScrollbar(false);
+      }
+    };
+    fetchTodo();
+  }, []);
+
   return (
-    <ListStyled>
-      {todoMock.length > 0 ? (
-        todoMock.map((todo) => <Item todo={todo} key={todo.id} />)
+    <ListStyled isShowScrollbar={isShowScrollbar}>
+      {todoList.length > 0 ? (
+        todoList.map((todoItem) => (
+          <TodoItem key={todoItem.id} todo={todoItem} />
+        ))
       ) : (
-        <h1>No data</h1>
+        <h1> No Data </h1>
       )}
     </ListStyled>
   );

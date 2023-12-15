@@ -1,15 +1,22 @@
+import { useState } from "react";
+import CustomCheckbox from "../CustomCheckbox";
 import ItemStyled from "./styles";
 
-const Item = ({ todo }) => {
-  const { id, content, isCompleted } = todo;
-  console.log(id, content, isCompleted);
+const TodoItem = ({ todo }) => {
+  const { id, title, isCompleted } = todo;
+  const [isChecked, setIsChecked] = useState(isCompleted);
+
+  const handleClick = (id) => {
+    setIsChecked(!isChecked);
+  };
+
   return (
-    <ItemStyled>
-      <input type="checkbox" />
-      <p className={`todo-content ${isCompleted && "completed"}`}>{content}</p>
+    <ItemStyled onClick={() => handleClick(id)}>
+      <CustomCheckbox id={id} isChecked={isChecked} />
+      <p className={`todo-content ${isChecked && "completed"}`}>{title}</p>
       <img src="/src/assets/trash.png" alt="trash" />
     </ItemStyled>
   );
 };
 
-export default Item;
+export default TodoItem;
