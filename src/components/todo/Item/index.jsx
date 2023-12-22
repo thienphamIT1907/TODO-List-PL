@@ -6,13 +6,20 @@ const TodoItem = ({ todo }) => {
   const { id, title, isCompleted } = todo;
   const [isChecked, setIsChecked] = useState(isCompleted);
 
-  const handleClick = (id) => {
-    setIsChecked(!isChecked);
-  };
+  console.log("isChecked", isChecked);
 
   return (
-    <ItemStyled onClick={() => handleClick(id)}>
-      <CustomCheckbox id={id} isChecked={isChecked} />
+    <ItemStyled
+      onClick={(e) => {
+        e.preventDefault();
+        setIsChecked((prev) => !prev);
+      }}
+    >
+      <CustomCheckbox
+        id={id}
+        isChecked={isChecked}
+        setIsChecked={setIsChecked}
+      />
       <p className={`todo-content ${isChecked && "completed"}`}>{title}</p>
       <img src="/src/assets/trash.png" alt="trash" />
     </ItemStyled>
