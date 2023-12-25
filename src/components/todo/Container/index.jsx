@@ -31,7 +31,12 @@ const Container = () => {
     <ContainerStyled>
       <Title content="To do list:" />
       <Input setTodoList={setTodoList} fetchTodo={fetchTodo} />
-      <List todoList={todoList} isShowScrollbar={isShowScrollbar} />
+      <List
+        todoList={todoList}
+        isShowScrollbar={isShowScrollbar}
+        fetchTodo={fetchTodo}
+        setTodoList={setTodoList}
+      />
     </ContainerStyled>
   );
 };
