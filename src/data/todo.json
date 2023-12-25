@@ -8,17 +8,7 @@
     {
       "id": 2,
       "title": "Go office",
-      "isCompleted": false
-    },
-    {
-      "id": 65,
-      "title": "Hello",
-      "isCompleted": false
-    },
-    {
-      "id": 83,
-      "title": "Go sleept",
-      "isCompleted": false
+      "isCompleted": true
     }
   ]
 }

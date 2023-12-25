@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axiosRequest from "../../../config/axiosConfig";
 import CustomCheckbox from "../CustomCheckbox";
 import ItemStyled from "./styles";
 
@@ -6,15 +7,19 @@ const TodoItem = ({ todo }) => {
   const { id, title, isCompleted } = todo;
   const [isChecked, setIsChecked] = useState(isCompleted);
 
-  console.log("isChecked", isChecked);
+  const handleItemClick = (e) => {
+    e.preventDefault();
+    setIsChecked((prev) => {
+      axiosRequest.put(`/todos/${id}`, {
+        ...todo,
+        isCompleted: !prev,
+      });
+      return !prev;
+    });
+  };
 
   return (
-    <ItemStyled
-      onClick={(e) => {
-        e.preventDefault();
-        setIsChecked((prev) => !prev);
-      }}
-    >
+    <ItemStyled onClick={handleItemClick}>
       <CustomCheckbox
         id={id}
         isChecked={isChecked}
