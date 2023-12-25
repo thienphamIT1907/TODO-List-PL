@@ -2,7 +2,7 @@ import { useState } from "react";
 import axiosRequest from "../../../config/axiosConfig";
 import InputStyled from "./styles";
 
-const Input = () => {
+const Input = ({ setTodoList, fetchTodo }) => {
   const [inputValue, setInputValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [autoId, setAutoId] = useState(Math.floor(Math.random() * 100));
@@ -28,6 +28,8 @@ const Input = () => {
     if (response.status === 201) {
       setInputValue("");
       setAutoId((prev) => prev + 1);
+      const response = await fetchTodo();
+      setTodoList(response?.data);
     }
   };
   return (
