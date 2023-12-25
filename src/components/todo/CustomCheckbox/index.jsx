@@ -1,4 +1,3 @@
-import React from "react";
 import CustomCheckboxStyled from "./styles";
 
 const CustomCheckbox = ({ id, isChecked, setIsChecked }) => {

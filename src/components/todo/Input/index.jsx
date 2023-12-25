@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axiosRequest from "../../../config/axiosConfig";
+import { Context } from "../../../context/todoContext";
 import InputStyled from "./styles";
 
-const Input = ({ setTodoList, fetchTodo }) => {
+const Input = () => {
+  const { setTodoList, fetchTodo } = useContext(Context);
+
   const [inputValue, setInputValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [autoId, setAutoId] = useState(Math.floor(Math.random() * 100));

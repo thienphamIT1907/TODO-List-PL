@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axiosRequest from "../../../config/axiosConfig";
+import { Context } from "../../../context/todoContext";
 import CustomCheckbox from "../CustomCheckbox";
 import ItemStyled from "./styles";
 
-const TodoItem = ({ todo, setTodoList, fetchTodo }) => {
+const TodoItem = ({ todo }) => {
+  const { setTodoList, fetchTodo } = useContext(Context);
   const { id, title, isCompleted } = todo;
   const [isChecked, setIsChecked] = useState(isCompleted);
-
   const handleDeleteItem = async (e) => {
     e.stopPropagation();
     const response = await axiosRequest.delete(`/todos/${id}`);

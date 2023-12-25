@@ -1,7 +1,11 @@
+import { useContext } from "react";
+import { Context } from "../../../context/todoContext";
 import TodoItem from "../Item";
 import ListStyled from "./styles";
 
-const List = ({ todoList, isShowScrollbar, fetchTodo, setTodoList }) => {
+const List = () => {
+  const { setTodoList, fetchTodo, isShowScrollbar, todoList } =
+    useContext(Context);
   return (
     <ListStyled isShowScrollbar={isShowScrollbar}>
       {todoList?.length > 0 ? (
