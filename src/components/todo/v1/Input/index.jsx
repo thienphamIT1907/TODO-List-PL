@@ -31,7 +31,7 @@ const Input = () => {
 
     if (response.status === 201) {
       const response = await fetchTodo();
-      setTodoList(response?.data);
+      setTodoList(response);
     }
     setIsFetchingTodoList(false);
     setIsDisabled(false);
