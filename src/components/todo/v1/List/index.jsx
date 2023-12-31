@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { Context } from "../../../context/todoContext";
-import TodoItem from "../Item";
-import ListStyled from "./styles";
+import TodoItem from "src/components/todo/v1/Item";
+import ListStyled from "src/components/todo/v1/List/styles";
+import { Context } from "src/context/todoContext";
 
 const List = () => {
   const { setTodoList, fetchTodo, isShowScrollbar, todoList } =

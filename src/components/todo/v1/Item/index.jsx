@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import axiosRequest from "../../../config/axiosConfig";
-import { Context } from "../../../context/todoContext";
-import CustomCheckbox from "../CustomCheckbox";
-import ItemStyled from "./styles";
+import CustomCheckbox from "src/components/todo/v1/CustomCheckbox";
+import ItemStyled from "src/components/todo/v1/Item/styles";
+import axiosRequest from "src/config/axiosConfig";
+import { Context } from "src/context/todoContext";
 
 const TodoItem = ({ todo }) => {
   const { setTodoList, fetchTodo } = useContext(Context);

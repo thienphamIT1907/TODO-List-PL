@@ -1,4 +1,4 @@
-import CustomCheckboxStyled from "./styles";
+import CustomCheckboxStyled from "src/components/todo/v1/CustomCheckbox/styles";
 
 const CustomCheckbox = ({ id, isChecked, setIsChecked }) => {
   return (

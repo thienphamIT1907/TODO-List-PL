@@ -1,5 +1,5 @@
-import Container from "./components/todo/Container";
-import TodoContext from "./context/todoContext";
+import Container from "src/components/todo/v1/Container";
+import TodoContext from "src/context/todoContext";
 
 function App() {
   return (
