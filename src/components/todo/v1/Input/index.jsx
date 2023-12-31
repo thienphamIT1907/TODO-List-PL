@@ -2,15 +2,12 @@ import { useContext, useState } from "react";
 import InputStyled from "src/components/todo/v1/Input/styles";
 import axiosRequest from "src/config/axiosConfig";
 import { Context } from "src/context/todoContext";
-
+import { generateRandomId } from "src/utils/tools";
 
 const Input = () => {
   const { setTodoList, fetchTodo } = useContext(Context);
-
   const [inputValue, setInputValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
-  const [autoId, setAutoId] = useState(Math.floor(Math.random() * 100));
-
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
     if (e.target.value === "") {
@@ -22,7 +19,7 @@ const Input = () => {
 
   const handleClick = async () => {
     const payload = {
-      id: autoId,
+      id: generateRandomId(),
       title: inputValue,
       isCompleted: false,
     };
@@ -31,7 +28,6 @@ const Input = () => {
 
     if (response.status === 201) {
       setInputValue("");
-      setAutoId((prev) => prev + 1);
       const response = await fetchTodo();
       setTodoList(response?.data);
     }
