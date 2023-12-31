@@ -12,8 +12,8 @@ const TodoItem = ({ todo }) => {
     e.stopPropagation();
     const response = await axiosRequest.delete(`/todos/${id}`);
     if (response.status === 200) {
-      const latestTodoList = await fetchTodo();
-      setTodoList(latestTodoList);
+      const response = await fetchTodo();
+      setTodoList(response?.data);
     }
   };
 
