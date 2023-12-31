@@ -5,7 +5,7 @@ import { Context } from "src/context/todoContext";
 import { generateRandomId } from "src/utils/tools";
 
 const Input = () => {
-  const { setTodoList, fetchTodo } = useContext(Context);
+  const { setTodoList, fetchTodo, setIsFetchingTodoList } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const handleInputChange = (e) => {
@@ -18,19 +18,23 @@ const Input = () => {
   };
 
   const handleClick = async () => {
+    setIsFetchingTodoList(true);
+    setIsDisabled(true);
+
     const payload = {
       id: generateRandomId(),
       title: inputValue,
       isCompleted: false,
     };
-
+    setInputValue("");
     const response = await axiosRequest.post("/todos", payload);
 
     if (response.status === 201) {
-      setInputValue("");
       const response = await fetchTodo();
       setTodoList(response?.data);
     }
+    setIsFetchingTodoList(false);
+    setIsDisabled(false);
   };
   return (
     <InputStyled>

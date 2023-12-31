@@ -32,6 +32,7 @@ const TodoContext = ({ children }) => {
         fetchTodo,
         setTodoList,
         isFetchingTodoList,
+        setIsFetchingTodoList
       }}
     >
       {children}
