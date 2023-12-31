@@ -27,7 +27,6 @@ const List = () => {
         <>
           {hasData ? (
             todoList
-              .reverse()
               .map((todoItem) => (
                 <TodoItem
                   key={todoItem.id}
