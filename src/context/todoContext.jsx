@@ -5,6 +5,7 @@ export const Context = createContext([]);
 
 const TodoContext = ({ children }) => {
   const [todoList, setTodoList] = useState([]);
+  const [isFetchingTodoList, setIsFetchingTodoList] = useState(false);
 
   const fetchTodo = async () => {
     const response = await axiosRequest("/todos");
@@ -12,10 +13,12 @@ const TodoContext = ({ children }) => {
   };
 
   useEffect(() => {
+    setIsFetchingTodoList(true);
     (async () => {
       try {
         const response = await fetchTodo();
         setTodoList(response?.data);
+        setIsFetchingTodoList(false);
       } catch (e) {
         throw new Error(e);
       }
@@ -28,6 +31,7 @@ const TodoContext = ({ children }) => {
         todoList,
         fetchTodo,
         setTodoList,
+        isFetchingTodoList,
       }}
     >
       {children}
