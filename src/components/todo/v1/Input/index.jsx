@@ -5,9 +5,11 @@ import { Context } from "src/context/todoContext";
 import { generateRandomId } from "src/utils/tools";
 
 const Input = () => {
-  const { setTodoList, fetchTodo, setIsFetchingTodoList } = useContext(Context);
+  const { setTodoList, fetchTodo, setIsFetchingTodoList, isFetchingTodoList } =
+    useContext(Context);
   const [inputValue, setInputValue] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
+
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
     if (e.target.value === "") {
@@ -36,9 +38,23 @@ const Input = () => {
     setIsFetchingTodoList(false);
     setIsDisabled(false);
   };
+
+  const handleEnterPress = (e) => {
+    const keyCode = e.code;
+
+    if (keyCode === "Enter") {
+      handleClick();
+    }
+  };
   return (
     <InputStyled>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
+      <input
+        disabled={isFetchingTodoList}
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        onKeyDown={handleEnterPress}
+      />
       <button
         onClick={handleClick}
         className={`plus-button ${isDisabled ? "disabled-btn" : ""}`}
