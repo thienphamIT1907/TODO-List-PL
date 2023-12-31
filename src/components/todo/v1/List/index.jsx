@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import EmptyData from "src/components/todo/v1/EmptyData";
 import TodoItem from "src/components/todo/v1/Item";
 import ListStyled from "src/components/todo/v1/List/styles";
 import { Context } from "src/context/todoContext";
@@ -19,7 +20,7 @@ const List = () => {
           .reverse()
           .map((todoItem) => <TodoItem key={todoItem.id} todo={todoItem} />)
       ) : (
-        <h1> No Data </h1>
+        <EmptyData />
       )}
     </ListStyled>
   );
