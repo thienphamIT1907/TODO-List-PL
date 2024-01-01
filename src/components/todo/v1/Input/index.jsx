@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import InputStyled from "src/components/todo/v1/Input/styles";
 import axiosRequest from "src/config/axiosConfig";
 import { Context } from "src/context/todoContext";
@@ -37,6 +38,9 @@ const Input = () => {
     }
     setIsFetchingTodoList(false);
     setIsDisabled(false);
+    toast("Create new TODO successfully!", {
+      type: "success",
+    });
   };
 
   const handleEnterPress = (e) => {

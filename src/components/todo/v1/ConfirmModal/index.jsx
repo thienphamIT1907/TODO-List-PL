@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { toast } from "react-toastify";
 import ConfirmModalStyled from "src/components/todo/v1/ConfirmModal/styles";
 import axiosRequest from "src/config/axiosConfig";
 import { Context } from "src/context/todoContext";
@@ -10,9 +11,13 @@ const ConfirmModal = ({ setIsShowConfirm, selectingId }) => {
   const handleConfirmDelete = async () => {
     setIsFetchingTodoList(true);
     const response = await axiosRequest.delete(`/todos/${selectingId}`);
+
     if (response.status === 200) {
       const response = await fetchTodo();
       setTodoList(response);
+      toast("Delete TODO successfully!", {
+        type: "success",
+      });
     }
     setIsFetchingTodoList(false);
     setIsShowConfirm(false);
