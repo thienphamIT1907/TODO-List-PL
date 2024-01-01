@@ -11,7 +11,7 @@ const ItemStyled = styled.div`
   cursor: pointer;
   transition: all 0.4s;
 
-  & > input[type=checkbox] {
+  & > input[type="checkbox"] {
     background: red;
   }
 
@@ -27,6 +27,21 @@ const ItemStyled = styled.div`
   .completed {
     text-decoration: line-through;
     color: #8080806e;
+  }
+
+  .content {
+    width: 100%;
+    text-align: left;
+
+    & > span {
+      padding-left: 10px;
+      font-style: italic;
+      color: gray;
+      font-size: 13px;
+      margin-top: 10px;
+      display: inline-block;
+      font-weight: 300;
+    }
   }
 `;
 

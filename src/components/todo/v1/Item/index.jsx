@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import { useContext, useState } from "react";
 import CustomCheckbox from "src/components/todo/v1/CustomCheckbox";
 import ItemStyled from "src/components/todo/v1/Item/styles";
@@ -5,8 +7,10 @@ import axiosRequest from "src/config/axiosConfig";
 import { Context } from "src/context/todoContext";
 
 const TodoItem = ({ todo, setIsShowConfirm, setSelectingId }) => {
+  dayjs.extend(relativeTime);
+
   const { setTodoList, fetchTodo } = useContext(Context);
-  const { id, title, isCompleted } = todo;
+  const { id, title, isCompleted, createAt } = todo;
   const [isChecked, setIsChecked] = useState(isCompleted);
 
   const handleDeleteItem = async (e) => {
@@ -33,7 +37,10 @@ const TodoItem = ({ todo, setIsShowConfirm, setSelectingId }) => {
         isChecked={isChecked}
         setIsChecked={setIsChecked}
       />
-      <p className={`todo-content ${isChecked && "completed"}`}>{title}</p>
+      <div className="content">
+        <p className={`todo-content ${isChecked && "completed"}`}>{title}</p>
+        <span>{dayjs(createAt).fromNow()}</span>
+      </div>
       <img src="/src/assets/trash.png" alt="trash" onClick={handleDeleteItem} />
     </ItemStyled>
   );

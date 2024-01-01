@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import InputStyled from "src/components/todo/v1/Input/styles";
@@ -28,6 +29,7 @@ const Input = () => {
       id: generateRandomId(),
       title: inputValue,
       isCompleted: false,
+      createAt: dayjs(),
     };
     setInputValue("");
     const response = await axiosRequest.post("/todos", payload);
