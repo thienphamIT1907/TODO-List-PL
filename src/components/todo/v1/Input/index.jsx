@@ -39,7 +39,7 @@ const Input = () => {
       setTodoList(response);
     }
     setIsFetchingTodoList(false);
-    setIsDisabled(false);
+    setIsDisabled(false); // TODO: Fix this to prevent creat empty todo
     toast("Create new TODO successfully!", {
       type: "success",
     });

@@ -17,6 +17,7 @@ const ItemStyled = styled.div`
 
   &:hover {
     background: #dd9b992e;
+    border-radius: 12px;
   }
 
   .todo-content {
@@ -41,6 +42,21 @@ const ItemStyled = styled.div`
       margin-top: 10px;
       display: inline-block;
       font-weight: 300;
+    }
+  }
+
+  .delete-button {
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+    transition: 0.2s;
+    cursor: pointer;
+    background: #dd9b99;
+    color: white;
+
+    &:hover {
+      background: #b77a79
     }
   }
 `;

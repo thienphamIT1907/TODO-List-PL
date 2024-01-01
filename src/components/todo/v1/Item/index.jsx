@@ -41,7 +41,7 @@ const TodoItem = ({ todo, setIsShowConfirm, setSelectingId }) => {
         <p className={`todo-content ${isChecked && "completed"}`}>{title}</p>
         <span>{dayjs(createAt).fromNow()}</span>
       </div>
-      <img src="/src/assets/trash.png" alt="trash" onClick={handleDeleteItem} />
+      <button className="delete-button" onClick={handleDeleteItem}>Delete</button>
     </ItemStyled>
   );
 };

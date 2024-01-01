@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
 const InputStyled = styled.div`
-  margin-bottom: 15px;
+  margin: 15px 0 20px;
   position: relative;
   width: 230px;
 
   & > input {
     outline: none;
     border: 1px solid #dd9b99;
-    padding: 5px 32px 5px 10px;
+    padding: 8px 32px 8px 10px;
     border-radius: 5px;
     width: 230px;
     font-size: 15px;
@@ -19,8 +19,8 @@ const InputStyled = styled.div`
     width: 24px;
     height: 24px;
     position: absolute;
-    top: 3px;
-    right: 2px;
+    top: 5px;
+    right: 5px;
     cursor: pointer;
     transition: all 0.4s;
     border: none;
