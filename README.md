@@ -21,6 +21,8 @@
 - Axios: [https://axios-http.com/docs/intro](https://axios-http.com/docs/intro)
 - Antd: [ant.design/components/overview/](https://ant.design/components/overview/)
 - Styled-components [styled-components.com/](https://styled-components.com/)
+- Box shadow: https://getcssscan.com/css-box-shadow-examples
+- Icon: https://icons8.com/icons/set/options
 
 ### Backend
 
