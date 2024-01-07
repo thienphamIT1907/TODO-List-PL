@@ -23,10 +23,27 @@ const InputStyled = styled.div`
     right: 2px;
     cursor: pointer;
     transition: all 0.4s;
+    border: none;
+    outline: none;
+    background: transparent;
+
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
-  .plus-button:hover{
-    transform: scale(1.1)
+  .plus-button:hover {
+    transform: scale(1.1);
+  }
+
+  .disable-btn {
+    filter: grayscale(1);
+    cursor: not-allowed;
+
+    &:hover {
+      transform: unset;
+    }
   }
 `;
 

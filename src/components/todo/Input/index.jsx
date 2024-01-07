@@ -1,14 +1,47 @@
-import InputStyled from './styles'
+import { useState } from "react";
+import InputStyled from "./styles";
+import axiosRequest from "../../../config/axios";
 
-const Input = () => {
-  const handleClick = () => {
-    console.log('Add...')
-  }
+const Input = ({ setTodoList, fetchTodo }) => {
+  const [inputValue, setInputValue] = useState("");
+  const [isDisable, setIsDisable] = useState(true);
+  const [autoId, setAutoId] = useState(Math.floor(Math.random() * 100));
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+    if (e.target.value === "") {
+      setIsDisable(true);
+    } else {
+      setIsDisable(false);
+    }
+  };
+  const handleClick = async () => {
+    const payload = {
+      id: autoId,
+      title: inputValue,
+      isCompleted: false,
+    };
+
+    const response = await axiosRequest.post("/todos", payload);
+
+    if (response.status === 201) {
+      setInputValue("");
+      setAutoId((pre) => pre + 1);
+      const response = await fetchTodo();
+      setTodoList(response?.data);
+    }
+  };
+
   return (
     <InputStyled>
-      <input type="text" />
-        <img src="/src/assets/plusbtn.png" alt="plusbtn" className='plus-button' onClick={handleClick}/>
+      <input type="text" value={inputValue} onChange={handleInputChange} />
+      <button
+        className={`plus-button ${isDisable ? "disable-btn" : ""}`}
+        onClick={handleClick}
+        disabled={isDisable}
+      >
+        <img src="/src/assets/plusbtn.png" alt="plusbtn" />
+      </button>
     </InputStyled>
-  )
-}
+  );
+};
 export default Input;

@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
-const ListStyled = styled.div``;
+const ListStyled = styled.div`
+  height: 150px;
+  overflow-y: scroll;
+`;
 
-export default ListStyled
+export default ListStyled;

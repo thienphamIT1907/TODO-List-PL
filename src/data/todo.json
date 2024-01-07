@@ -2,11 +2,8 @@
   "todos": [
     {
       "id": 1,
-      "title": "Go home"
-    },
-    {
-      "id": 2,
-      "title": "Go office"
+      "title": "Go home",
+      "isCompleted": false
     }
   ]
 }

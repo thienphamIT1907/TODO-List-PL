@@ -1,17 +1,18 @@
-import ListStyled from './styles'
-import { todoMock } from '../../../data/todo_mock';
-import Item from '../Item';
+import ListStyled from "./styles";
+import Item from "../Item";
 
-const List = () => {
+const List = ({ todoList, isShowScroll }) => {
   return (
-    <ListStyled>
-      {
-        todoMock.length > 0 ? (
-          todoMock.map(todoItem => <Item todo={todoItem} />)
-        ) : <h1> No Data </h1>
-      }
+    <ListStyled isShowScroll={isShowScroll}>
+      {todoList?.length > 0 ? (
+        todoList
+          .reverse()
+          .map((todoItem) => <Item key={todoItem.id} todo={todoItem} />)
+      ) : (
+        <h1> No Data </h1>
+      )}
     </ListStyled>
-  )
-}
+  );
+};
 
 export default List;
