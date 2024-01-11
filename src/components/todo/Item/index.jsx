@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CustomCheckbox from "../CustomCheckbox";
 import ItemStyled from "./styles";
 import axiosRequest from "../../../config/axios";
+import { Context } from "../../../context/todoContext";
 
-const Item = ({ todo, setTodoList, fetchTodo }) => {
+const Item = ({ todo }) => {
+  const { setTodoList, fetchTodo } = useContext(Context);
   const { id, title, isCompleted } = todo;
 
   const [isChecked, setIsChecked] = useState(isCompleted);
