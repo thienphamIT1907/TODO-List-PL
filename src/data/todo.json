@@ -1,19 +1,9 @@
 {
   "todos": [
     {
-      "id": 14,
-      "title": "2. go to office",
-      "isCompleted": false
-    },
-    {
       "id": 50,
       "title": "3. phuong",
       "isCompleted": false
-    },
-    {
-      "id": 73,
-      "title": "4. lêl",
-      "isCompleted": true
     }
   ]
 }
