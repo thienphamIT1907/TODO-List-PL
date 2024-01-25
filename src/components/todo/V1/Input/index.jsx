@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import InputStyled from "./styles";
-import axiosRequest from "../../../config/axios";
-import { Context } from "../../../context/todoContext";
+import axiosRequest from "src/config/axios";
+import { Context } from "src/context/todoContext";
 
 const Input = () => {
   const { setTodoList, fetchTodo } = useContext(Context);

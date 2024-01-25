@@ -6,25 +6,18 @@ export const Context = createContext();
 const TodoContext = ({ children }) => {
   const [todoList, setTodoList] = useState([]);
 
-  const [isShowScroll, setIsShowScroll] = useState(false);
-
   const fetchTodo = async () => {
     const response = await axiosRequest("/todos");
-    setTodoList(response.data);
-  };
-
-  const handleScroll = (length) => {
-    if (length > 3) {
-      setIsShowScroll(true);
-    } else {
-      setIsShowScroll(false);
-    }
+    return response;
   };
 
   useEffect(() => {
-    fetchTodo();
-    handleScroll(todoList?.length);
-  }, [todoList?.length]);
+    (async () => {
+      const response = await fetchTodo();
+      setTodoList(response?.data);
+    })();
+    // handleScroll(todoList?.length);
+  }, []);
 
   return (
     <Context.Provider
@@ -32,7 +25,6 @@ const TodoContext = ({ children }) => {
         todoList,
         fetchTodo,
         setTodoList,
-        isShowScroll,
       }}
     >
       {children}
